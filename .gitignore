@@ -1,0 +1,7 @@
+.env
+.pytest_cache
+.vscode
+cdk.out
+cdk.context.json
+__pycache__
+pipelines.egg-info

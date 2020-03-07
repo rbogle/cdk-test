@@ -1,0 +1,17 @@
+version: '0.2'
+phases: 
+    install: 
+        runtime-versions:
+            nodejs: 10
+        commands: 
+            - 'echo "--------INSTALL PHASE--------"'
+            - 'npm install -g aws-cdk'
+            - 'pip3 install -r requirements.txt'
+    build:
+        commands:
+            - 'echo "--------BUILD PHASE--------"'
+            - "cdk synth '*' "
+artifacts:
+    base-directory: cdk.out
+    files: 
+        - '**/*'
