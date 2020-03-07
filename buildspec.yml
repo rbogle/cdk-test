@@ -13,10 +13,10 @@ phases:
             - 'echo "----- Doing cdk synth -----"'
             - 'cdk synth --no-staging >  template.yaml'
             - 'echo "Starting SAM packaging `date` in `pwd`"'
-            - 'sam package --template-file template.yaml --s3-bucket $BUILD_ARTIFACT_BUCKET --output-template-file ../build/packaged.yaml'
+            - 'sam package --template-file template.yaml --s3-bucket $BUILD_ARTIFACT_BUCKET --output-template-file packaged.yaml'
 artifacts:
     files: 
-        - 'build/packaged.yaml'
+        - 'packaged.yaml'
     discard-paths: 'yes'
 cache:
     paths:
