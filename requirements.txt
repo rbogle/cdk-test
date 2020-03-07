@@ -1,4 +1,4 @@
 aws-cdk.core
-
+aws-sam-cli
 aws-cdk.aws_lambda
 aws-cdk.aws_apigateway
