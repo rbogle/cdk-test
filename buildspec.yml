@@ -8,12 +8,13 @@ phases:
             - 'npm install -g aws-cdk'
             - 'pip3 install -r requirements.txt'
             - 'mkdir build'
-            - 'which jq'
+
     build:
         commands:
             - 'echo "--------BUILD PHASE--------"'
             - 'echo "----- Doing cdk synth -----"'
             - 'cdk synth --no-staging > template.yaml'
+            - "yq 'del(.Parameters)' template.yaml -Y -i"
             - 'echo "starting SAM build to bundle assets"'
             - 'sam build -t template.yaml -b build'
             - 'echo "Starting SAM packaging `date` in `pwd`"'
