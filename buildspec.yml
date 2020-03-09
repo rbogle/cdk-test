@@ -15,11 +15,12 @@ phases:
             - 'cdk synth --no-staging > template.yaml'
             - 'echo "starting SAM build to bundle assets"'
             - 'sam build -t template.yaml -b build'
+            - 'rm ./template.yaml'
             - 'echo "Starting SAM packaging `date` in `pwd`"'
             - 'sam package --template-file ./build/template.yaml --s3-bucket $BUILD_ARTIFACT_BUCKET --output-template-file packaged.yaml'
 artifacts:
     files: 
-        - 'packaged.yaml'
+        - './packaged.yaml'
     discard-paths: 'yes'
 cache:
     paths:
