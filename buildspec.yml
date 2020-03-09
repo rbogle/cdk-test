@@ -12,11 +12,11 @@ phases:
         commands:
             - 'echo "--------BUILD PHASE--------"'
             - 'echo "----- Doing cdk synth -----"'
-            - 'cdk synth --no-staging >  template.yaml'
+            - 'cdk synth --no-staging > template.yaml'
             - 'echo "starting SAM build to bundle assets"'
             - 'sam build -t template.yaml -b build'
             - 'echo "Starting SAM packaging `date` in `pwd`"'
-            - 'sam package --template-file template.yaml --s3-bucket $BUILD_ARTIFACT_BUCKET --output-template-file packaged.yaml'
+            - 'sam package --template-file ./build/template.yaml --s3-bucket $BUILD_ARTIFACT_BUCKET --output-template-file packaged.yaml'
 artifacts:
     files: 
         - 'packaged.yaml'
